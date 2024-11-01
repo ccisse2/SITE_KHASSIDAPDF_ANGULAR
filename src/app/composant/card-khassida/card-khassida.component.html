@@ -1,0 +1,25 @@
+<div class="row row-cols-1 row-cols-md-3 g-4" id="khassida">
+  <div class="col" style="width: 14rem;" *ngFor="let khassida of khassidaList; trackBy: trackByKhassidaId">
+    <img [src]="khassida.lienImg" class="card-img-top" [alt]="khassida.name">
+    <div class="card-body">
+      <h5 class="card-title">{{ khassida.name }}</h5>
+      <a [href]="khassida.lienPdf" class="btn btn-primary">Télécharger</a>
+    </div>
+  </div>
+</div>
+
+<!-- Pagination Controls -->
+<nav aria-label="Pagination" *ngIf="totalPages > 1">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <button class="page-link" (click)="goToPage(currentPage - 1)">Précédent</button>
+    </li>
+    <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+        [class.active]="currentPage === i + 1">
+      <button class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</button>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <button class="page-link" (click)="goToPage(currentPage + 1)">Suivant</button>
+    </li>
+  </ul>
+</nav>
