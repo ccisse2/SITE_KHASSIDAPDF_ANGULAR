@@ -12,8 +12,10 @@ export class ApiServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getKhassidas(page: number, size: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/list_khassida?page=${page}&size=${size}`);
+  getKhassidas(): Observable<Khassida[]> {
+    return this.http.get<Khassida[]>(`${this.apiUrl}/list_khassida`).pipe(
+     catchError(this.handleError)
+    );
   }
 
   addKhassida(khassida: Khassida): Observable<Khassida> {

@@ -3,14 +3,13 @@ import {Router} from '@angular/router';
 import {Khassida} from '../../models/khassida';
 import {ApiServiceService} from '../../services/api-service.service';
 import {catchError, of, tap} from 'rxjs';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-card-khassida',
   standalone: true,
   imports: [
-    NgForOf,
-    NgIf
+    NgForOf
   ],
   templateUrl: './card-khassida.component.html',
   styleUrl: './card-khassida.component.css'
@@ -18,10 +17,6 @@ import {NgForOf, NgIf} from '@angular/common';
 export class CardKhassidaComponent implements OnInit {
   khassida: Khassida | undefined;
   khassidaList: Khassida[] = [];
-  currentPage: number = 1;
-  totalPages: number = 1;
-  totalItems: number = 0;
-  pageSize: number = 10;
 
 
   constructor(private router: Router,
@@ -29,25 +24,20 @@ export class CardKhassidaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadKhassidas(this.currentPage);
+    this.khassidaService.getKhassidas().pipe(
+      tap((response: any) => {
+        this.khassidaList = response.data;
+        console.log(`Récupération réussie des Khassidas`, this.khassidaList);
+      }),
+      catchError(error => {
+        console.error('Erreur lors de la récupération des Khassidas:', error);
+        return of([]); // renvoie un tableau vide en cas d'erreur
+      })
+    ).subscribe();
   }
 
   trackByKhassidaId(index: number, khassida: Khassida): number {
     return <number>khassida.id;
   }
 
-  loadKhassidas(page: number) {
-    this.khassidaService.getKhassidas(page, this.pageSize).subscribe(response => {
-      this.khassidaList = response.data;
-      this.totalItems = response.totalItems;
-      this.totalPages = response.totalPages;
-      this.currentPage = response.currentPage;
-    });
-  }
-
-  goToPage(page: number) {
-    if (page > 0 && page <= this.totalPages) {
-      this.loadKhassidas(page);
-    }
-  }
 }
