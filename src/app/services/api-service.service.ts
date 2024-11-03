@@ -18,6 +18,11 @@ export class ApiServiceService {
     );
   }
 
+  getKhassidasPage(page: number = 1) {
+    return this.http.get(`${this.apiUrl}/list?page=${page}`);
+  }
+
+
   addKhassida(khassida: Khassida): Observable<Khassida> {
     return this.http.post<Khassida>(`${this.apiUrl}/ajout_khassida`, khassida).pipe(
       catchError(this.handleError)

@@ -1,0 +1,14 @@
+<nav aria-label="Page navigation" class="d-flex justify-content-center">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <button class="page-link" (click)="previousPage()" [disabled]="currentPage === 1">&laquo; Précédent</button>
+    </li>
+    <li class="page-item" *ngFor="let page of getPages()" [class.active]="page === currentPage">
+      <button class="page-link" *ngIf="page !== -1" (click)="selectPage(page)">{{ page }}</button>
+      <span class="page-link" *ngIf="page === -1">...</span>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <button class="page-link" (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant &raquo;</button>
+    </li>
+  </ul>
+</nav>
