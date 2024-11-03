@@ -7,40 +7,39 @@ import {Khassida} from '../models/khassida';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiServiceService {
+export class QuranService {
   private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getKhassidas(): Observable<Khassida[]> {
-    return this.http.get<Khassida[]>(`${this.apiUrl}/list_khassida`).pipe(
-     catchError(this.handleError)
+    return this.http.get<Khassida[]>(`${this.apiUrl}/list_quran`).pipe(
+      catchError(this.handleError)
     );
   }
 
   getKhassidasPage(page: number = 1) {
-    return this.http.get(`${this.apiUrl}/list?page=${page}`);
+    return this.http.get(`${this.apiUrl}/quran_paginer?page=${page}`);
   }
 
 
   addKhassida(khassida: Khassida): Observable<Khassida> {
-    return this.http.post<Khassida>(`${this.apiUrl}/ajout_khassida`, khassida).pipe(
+    return this.http.post<Khassida>(`${this.apiUrl}/ajout_quran`, khassida).pipe(
       catchError(this.handleError)
     );
   }
 
   updateKhassida(khassida: Khassida): Observable<Khassida> {
-    return this.http.put<Khassida>(`${this.apiUrl}/modif_khassida/${khassida.id}`, khassida).pipe(
+    return this.http.put<Khassida>(`${this.apiUrl}/modif_quran/${khassida.id}`, khassida).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteKhassida(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/suppr_khassida/${id}`).pipe(
+    return this.http.delete<void>(`${this.apiUrl}/suppr_quran/${id}`).pipe(
       catchError(this.handleError)
     );
   }
-
 
   private handleError(error: HttpErrorResponse) {
     // Log the error for debugging
