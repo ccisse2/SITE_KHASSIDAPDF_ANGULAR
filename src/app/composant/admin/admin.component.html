@@ -1,34 +1,38 @@
-<form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="name">Nom</label>
-    <input id="name" formControlName="name" type="text">
-    <div *ngIf="adminForm.get('name')?.touched && adminForm.get('name')?.invalid">
-      <small *ngIf="adminForm.get('name')?.errors?.['required']">Le nom est requis.</small>
-      <small *ngIf="adminForm.get('name')?.errors?.['minlength']">Le nom doit contenir au moins 3 caractères.</small>
-      <small *ngIf="adminForm.get('name')?.errors?.['maxlength']">Le nom ne doit pas dépasser 255 caractères.</small>
+<app-carousel></app-carousel>
+<app-nab-bar></app-nab-bar>
+
+<div class="container mt-4">
+  <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nom</label>
+      <input id="name" formControlName="name" type="text" class="form-control" placeholder="Entrez le nom">
+      <div *ngIf="adminForm.get('name')?.touched && adminForm.get('name')?.invalid" class="form-text text-danger">
+        <small *ngIf="adminForm.get('name')?.errors?.['required']">Le nom est requis.</small>
+        <small *ngIf="adminForm.get('name')?.errors?.['minlength']">Le nom doit contenir au moins 3 caractères.</small>
+        <small *ngIf="adminForm.get('name')?.errors?.['maxlength']">Le nom ne doit pas dépasser 255 caractères.</small>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="lienImg">Image</label>
-    <input id="lienImg" type="file" (change)="onFileSelected($event, 'lienImg')">
-    <div *ngIf="adminForm.get('lienImg')?.touched && adminForm.get('lienImg')?.invalid">
-      <small *ngIf="adminForm.get('lienImg')?.errors?.['required']">L'image est requise.</small>
-      <small *ngIf="adminForm.get('lienImg')?.errors?.['invalidType']">Type de fichier invalide. Seuls les formats PNG et JPEG sont autorisés.</small>
-      <small *ngIf="adminForm.get('lienImg')?.errors?.['maxSizeExceeded']">La taille de l'image ne doit pas dépasser 2 Mo.</small>
+    <div class="mb-3">
+      <label for="lienImg" class="form-label">Image</label>
+      <input id="lienImg" type="file" (change)="onFileSelected($event, 'lienImg')" class="form-control">
+      <div *ngIf="adminForm.get('lienImg')?.touched && adminForm.get('lienImg')?.invalid" class="form-text text-danger">
+        <small *ngIf="adminForm.get('lienImg')?.errors?.['required']">L'image est requise.</small>
+        <small *ngIf="adminForm.get('lienImg')?.errors?.['invalidType']">Type de fichier invalide. Seuls les formats PNG et JPEG sont autorisés.</small>
+        <small *ngIf="adminForm.get('lienImg')?.errors?.['maxSizeExceeded']">La taille de l'image ne doit pas dépasser 2 Mo.</small>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="lienPdf">PDF</label>
-    <input id="lienPdf" type="file" (change)="onFileSelected($event, 'lienPdf')">
-    <div *ngIf="adminForm.get('lienPdf')?.touched && adminForm.get('lienPdf')?.invalid">
-      <small *ngIf="adminForm.get('lienPdf')?.errors?.['required']">Le PDF est requis.</small>
-      <small *ngIf="adminForm.get('lienPdf')?.errors?.['invalidType']">Type de fichier invalide. Seuls les fichiers PDF sont autorisés.</small>
-      <small *ngIf="adminForm.get('lienPdf')?.errors?.['maxSizeExceeded']">La taille du PDF ne doit pas dépasser 10 Mo.</small>
+    <div class="mb-3">
+      <label for="lienPdf" class="form-label">PDF</label>
+      <input id="lienPdf" type="file" (change)="onFileSelected($event, 'lienPdf')" class="form-control">
+      <div *ngIf="adminForm.get('lienPdf')?.touched && adminForm.get('lienPdf')?.invalid" class="form-text text-danger">
+        <small *ngIf="adminForm.get('lienPdf')?.errors?.['required']">Le PDF est requis.</small>
+        <small *ngIf="adminForm.get('lienPdf')?.errors?.['invalidType']">Type de fichier invalide. Seuls les fichiers PDF sont autorisés.</small>
+        <small *ngIf="adminForm.get('lienPdf')?.errors?.['maxSizeExceeded']">La taille du PDF ne doit pas dépasser 10 Mo.</small>
+      </div>
     </div>
-  </div>
 
-  <button type="submit" [disabled]="isSubmitting || adminForm.invalid">Soumettre</button>
-</form>
-
+    <button type="submit" class="btn btn-primary" [disabled]="isSubmitting || adminForm.invalid">Soumettre</button>
+  </form>
+</div>

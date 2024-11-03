@@ -33,6 +33,11 @@ export class TraducKhassidaService {
       catchError(this.handleError)
     );
   }
+  uploadFile(formData: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/upload-file`, formData).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   updateKhassida(khassida: TraductionKhassida): Observable<TraductionKhassida> {
     return this.http.put<TraductionKhassida>(`${this.apiUrl}/modif_khassida_traduit/${khassida.id}`, khassida).pipe(

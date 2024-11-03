@@ -41,6 +41,12 @@ export class ApiServiceKhassida {
     );
   }
 
+  uploadFile(formData: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/upload-file`, formData).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     // Log the error for debugging
     console.error('An error occurred:', error);

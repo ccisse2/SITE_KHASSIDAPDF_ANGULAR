@@ -7,6 +7,8 @@ import {QuranService} from '../../services/quran.service';
 import {catchError, of, tap} from 'rxjs';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from '@angular/common';
+import {CarouselComponent} from '../carousel/carousel.component';
+import {NabBarComponent} from '../nab-bar/nab-bar.component';
 
 
 
@@ -15,7 +17,9 @@ import {NgIf} from '@angular/common';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    CarouselComponent,
+    NabBarComponent
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
@@ -67,7 +71,7 @@ export class AdminComponent {
       serviceCall = this.quranService;
     }
 
-    serviceCall?.addKhassida(content).subscribe({
+    serviceCall?.uploadFile(formData).subscribe({
       next: (response) => {
         console.log('Ajout réussi:', response);
         this.isSubmitting = false;

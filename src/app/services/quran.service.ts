@@ -29,6 +29,12 @@ export class QuranService {
     );
   }
 
+  uploadFile(formData: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/upload-file`, formData).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   updateKhassida(khassida: Khassida): Observable<Khassida> {
     return this.http.put<Khassida>(`${this.apiUrl}/modif_quran/${khassida.id}`, khassida).pipe(
       catchError(this.handleError)
