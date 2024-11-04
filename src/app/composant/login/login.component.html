@@ -1,0 +1,29 @@
+<app-carousel></app-carousel>
+<app-nab-bar></app-nab-bar>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-4">Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="nom" class="form-label">Username</label>
+          <input type="text" id="nom" formControlName="nom" class="form-control">
+          <div *ngIf="loginForm.get('nom')?.invalid && loginForm.get('nom')?.touched" class="text-danger">
+            Username is required.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="motDePasse" class="form-label">Password</label>
+          <input type="password" id="motDePasse" formControlName="motDePasse" class="form-control">
+          <div *ngIf="loginForm.get('motDePasse')?.invalid && loginForm.get('motDePasse')?.touched" class="text-danger">
+            Password is required.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+        <div *ngIf="loginError" class="text-danger mt-2">{{ loginError }}</div>
+      </form>
+    </div>
+  </div>
+</div>
+

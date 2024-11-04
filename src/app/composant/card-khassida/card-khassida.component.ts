@@ -90,7 +90,12 @@ ngOnInit(): void {
   }
 
   onSearch(query: string): void {
-  console.log('la méthode onsearch de card est appelé');
+    if (!query.trim()) {
+      // Réinitialise la liste des résultats en rechargeant le contenu initial
+      this.loadContent(this.currentPage);
+      return;
+    }
+
     let service;
     if (this.activePageType === 'traduction') {
       service = this.traductionService;

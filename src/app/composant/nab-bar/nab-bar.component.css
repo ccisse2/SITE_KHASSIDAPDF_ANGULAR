@@ -45,3 +45,8 @@
   color: white;
 
 }
+
+.container-fluid{
+  display: flex;
+  justify-content: space-between;
+}
