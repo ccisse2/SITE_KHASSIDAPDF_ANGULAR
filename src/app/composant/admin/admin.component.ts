@@ -9,6 +9,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {NgIf} from '@angular/common';
 import {CarouselComponent} from '../carousel/carousel.component';
 import {NabBarComponent} from '../nab-bar/nab-bar.component';
+import {Router} from '@angular/router';
 
 
 
@@ -31,6 +32,7 @@ export class AdminComponent {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private khassidaService: ApiServiceKhassida,
     private traductionService: TraducKhassidaService,
     private quranService: QuranService
@@ -76,6 +78,9 @@ export class AdminComponent {
         console.log('Ajout réussi:', response);
         this.isSubmitting = false;
         this.adminForm.reset();
+        //navigation vers la page khassida
+        this.router.navigate(['/khassidas']).then(r => {
+        });
       },
       error: (error) => {
         console.error('Erreur lors de l\'ajout:', error);
