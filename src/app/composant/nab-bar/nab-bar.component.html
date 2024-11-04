@@ -6,24 +6,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="navbar-brand Display-5" aria-current="page" routerLink="/khassidas">KHASSIDA</a>
+          <a class="navbar-brand Display-1" aria-current="page" routerLink="/khassidas">KHASSIDA</a>
         </li>
         <li class="nav-item">
-          <a class="navbar-brand Display-5" aria-current="page" routerLink="/traduction">TRADUCTION</a>
+          <a class="navbar-brand Display-1" aria-current="page" routerLink="/traduction">TRADUCTION</a>
         </li>
         <li class="nav-item">
-          <a class="navbar-brand Display-5" aria-current="page" routerLink="/quran">QURAN</a>
+          <a class="navbar-brand Display-1" aria-current="page" routerLink="/quran">QURAANE</a>
         </li>
-        <li class="nav-item" *ngIf="isAuthenticated">
-          <a class="navbar-brand Display-5" aria-current="page" routerLink="/admin">ADMINISTRATEUR</a>
-        </li>
-        <li class="nav-item" *ngIf="isAuthenticated">
-          <a class="btn btn-danger Display-6" aria-current="page" (click)="logout()">DECONNECTION</a>
+        <li class="nav-item">
+          <a class="navbar-brand Display-1" aria-current="page" routerLink="/admin">ADMINISTRATEUR</a>
         </li>
       </ul>
     </div>
     <div class="d-flex" role="search">
-      <app-search></app-search>
+      <input class="form-control me-3" type="search" id="searchBox" placeholder="Rechercher un khassida" aria-label="Search">
+      <button class="btn btn-outline-success" id="searchButton" onclick="searchBook()" type="submit" >Rechercher</button>
     </div>
   </div>
-</nav>
+</nav>no
