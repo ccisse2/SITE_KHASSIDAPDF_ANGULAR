@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {debounceTime, distinctUntilChanged, Subject} from 'rxjs';
-import {ApiServiceKhassida} from '../../services/api-service.khassida';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+
+import {SharedService} from '../../services/shared.service';
 
 @Component({
   selector: 'app-search',
@@ -9,29 +9,11 @@ import {ApiServiceKhassida} from '../../services/api-service.khassida';
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
-export class SearchComponent implements OnInit{
-  searchTerm$ = new Subject<string>();
-
-  constructor(private khassidaService: ApiServiceKhassida) {
-  }
-
-  ngOnInit(): void {
-    this.searchTerm$.pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    ).subscribe((query: string) => {
-      this.searchKhassidas(query);
-    });
-  }
+export class SearchComponent{
+  constructor(private sharedService: SharedService) {}
 
   onSearchChange(query: string): void {
-    this.searchTerm$.next(query);
+    console.log('la méthode onSearchChange de SearchComponent est appellé')
+    this.sharedService.emitSearchQuery(query);
   }
-
-  searchKhassidas(query: string): void {
-    this.khassidaService.searchKhassidas(query).subscribe(response => {
-      this.khassidaList = response.data;
-    });
-  }
-
 }

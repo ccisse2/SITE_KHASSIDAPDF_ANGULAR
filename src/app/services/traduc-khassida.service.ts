@@ -3,6 +3,7 @@ import {environment} from '../environments/environment';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 import {TraductionKhassida} from '../models/TraductionKhassida';
+import {Khassida} from '../models/khassida';
 
 
 
@@ -35,6 +36,12 @@ export class TraducKhassidaService {
   }
   uploadFile(formData: FormData): Observable<any> {
     return this.http.post(`${this.apiUrl}/upload-file`, formData).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  searchKhassidas(query : string){
+    return this.http.get<{ data: Khassida[] }>(`${this.apiUrl}/search`, { params: { q: query } }).pipe(
       catchError(this.handleError)
     );
   }

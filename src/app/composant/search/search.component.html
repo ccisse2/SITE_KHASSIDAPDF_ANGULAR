@@ -1,1 +1,4 @@
-<p>search works!</p>
+<div class="input-group mb-3">
+  <input #searchBox class="form-control me-3" type="search" id="searchBox" placeholder="Rechercher un khassida" aria-label="Search" (input)="onSearchChange(searchBox.value)">
+  <button class="btn btn-outline-success" id="searchButton" type="button" (click)="onSearchChange(searchBox.value)">Rechercher</button>
+</div>

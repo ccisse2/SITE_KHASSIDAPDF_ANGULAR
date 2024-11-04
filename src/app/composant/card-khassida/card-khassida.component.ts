@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Khassida} from '../../models/khassida';
 import {ApiServiceKhassida} from '../../services/api-service.khassida';
@@ -9,6 +9,7 @@ import {TraducKhassidaService} from '../../services/traduc-khassida.service';
 import {CarouselComponent} from '../carousel/carousel.component';
 import {NabBarComponent} from '../nab-bar/nab-bar.component';
 import {QuranService} from '../../services/quran.service';
+import {SharedService} from '../../services/shared.service';
 
 @Component({
   selector: 'app-card-khassida',
@@ -28,13 +29,15 @@ export class CardKhassidaComponent implements OnInit {
   currentPage: number = 1;
   totalPages: number = 1;
   activePageType: 'khassida' | 'traduction' | 'quran' = 'khassida';
+  @Input() searchQuery: string = ''
 
 
   constructor(private route: ActivatedRoute,
               private router : Router,
               private traductionService: TraducKhassidaService,
               private khassidaService: ApiServiceKhassida,
-              private quranService: QuranService
+              private quranService: QuranService,
+              private sharedService: SharedService
   ) {}
 
   /**
@@ -53,7 +56,16 @@ ngOnInit(): void {
       }
       this.loadContent(this.currentPage);
     });
+    // Écoute des changements dans le service partagé
+    this.sharedService.searchQuery$.subscribe(query => {
+      this.onSearch(query);
+    });
 }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['searchQuery'] && this.searchQuery) {
+      this.onSearch(this.searchQuery);
+    }
+  }
 
   loadContent(page: number): void{
     let service;
@@ -75,6 +87,22 @@ ngOnInit(): void {
         return of([]); // renvoie un tableau vide en cas d'erreur
       })
     ).subscribe();
+  }
+
+  onSearch(query: string): void {
+  console.log('la méthode onsearch de card est appelé');
+    let service;
+    if (this.activePageType === 'traduction') {
+      service = this.traductionService;
+    } else if (this.activePageType === 'quran') {
+      service = this.quranService;
+    } else {
+      service = this.khassidaService;
+    }
+
+    service.searchKhassidas(query).subscribe(response => {
+      this.khassidaList = response.data;
+    });
   }
 
   onPageChange(newPage: number): void {

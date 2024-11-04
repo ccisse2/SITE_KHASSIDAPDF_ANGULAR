@@ -1,0 +1,11 @@
+#searchBox {
+  height: 30px;
+  margin-top: 15px;
+}
+#searchButton{
+  color: white;
+  margin-top: 15px;
+  height: 30px;
+  text-align: center;
+
+}

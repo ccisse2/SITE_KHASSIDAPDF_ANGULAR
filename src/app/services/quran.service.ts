@@ -47,6 +47,12 @@ export class QuranService {
     );
   }
 
+  searchKhassidas(query : string){
+    return this.http.get<{ data: Khassida[] }>(`${this.apiUrl}/search`, { params: { q: query } }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     // Log the error for debugging
     console.error('An error occurred:', error);
