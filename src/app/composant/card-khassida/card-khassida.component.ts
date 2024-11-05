@@ -10,6 +10,7 @@ import {CarouselComponent} from '../carousel/carousel.component';
 import {NabBarComponent} from '../nab-bar/nab-bar.component';
 import {QuranService} from '../../services/quran.service';
 import {SharedService} from '../../services/shared.service';
+import {ErrorNotificationService} from '../../services/error-notification.service';
 
 @Component({
   selector: 'app-card-khassida',
@@ -37,7 +38,8 @@ export class CardKhassidaComponent implements OnInit {
               private traductionService: TraducKhassidaService,
               private khassidaService: ApiServiceKhassida,
               private quranService: QuranService,
-              private sharedService: SharedService
+              private sharedService: SharedService,
+              private errorNotificationService: ErrorNotificationService
   ) {}
 
   /**
@@ -83,7 +85,7 @@ ngOnInit(): void {
         console.log(`Récupération réussie des Khassidas page ${this.totalPages}`, this.khassidaList);
       }),
       catchError(error => {
-        console.error('Erreur lors de la récupération des Khassidas page ${page}:', error);
+        this.handleError();
         return of([]); // renvoie un tableau vide en cas d'erreur
       })
     ).subscribe();
@@ -113,6 +115,10 @@ ngOnInit(): void {
   onPageChange(newPage: number): void {
     this.currentPage = newPage;
     this.loadContent(this.currentPage);
+  }
+
+  handleError(): void {
+    this.errorNotificationService.setErrorMessage('Une erreur est survenue. Veuillez réessayer plus tard.');
   }
 
   trackByKhassidaId(index: number, khassida: Khassida): number {

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../environments/environment';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {catchError, Observable, throwError} from 'rxjs';
+import {catchError, Observable, tap, throwError} from 'rxjs';
 import {Khassida} from '../models/khassida';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceKhassida {
-  private apiUrl = environment.apiUrl;
+  private apiUrl = 'http://145.223.33.61:3000/api/khassidas';
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +19,10 @@ export class ApiServiceKhassida {
   }
 
   getKhassidasPage(page: number = 1) {
-    return this.http.get(`${this.apiUrl}/list?page=${page}`);
+    return this.http.get(`${this.apiUrl}/list?page=${page}`).pipe(
+      tap(data => console.log('Données reçues:', data)), // Ajout
+      catchError(this.handleError)
+    );
   }
 
 
