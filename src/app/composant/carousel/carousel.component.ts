@@ -14,10 +14,10 @@ import {BehaviorSubject, interval, Subscription} from 'rxjs';
 })
 export class CarouselComponent implements OnInit {
   images = [
-    'assets/images/S_Mountakha.jpg',
-    'assets/images/S_Mountakha_2.jpg',
-    'assets/images/S_Mountakha_4.jpg',
-    'assets/images/S_Mountakha_6.jpg',
+    'assets/images/S_Mountakha.webp',
+    'assets/images/S_Mountakha_2.webp',
+    'assets/images/S_Mountakha_4.webp',
+    'assets/images/S_Mountakha_6.webp',
 
   ];
   currentImage$ = new BehaviorSubject<string>('');

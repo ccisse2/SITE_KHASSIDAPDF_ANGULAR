@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg bg-body-primary">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M3 12.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
+      </svg>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -14,14 +16,11 @@
         <li class="nav-item">
           <a class="navbar-brand Display-1" aria-current="page" routerLink="/quran">QURAN</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isAuthenticated">
           <a class="navbar-brand Display-1" aria-current="page" routerLink="/admin">ADMINISTRATEUR</a>
         </li>
       </ul>
     </div>
-    <div class="d-flex" role="search">
-      <input class="form-control me-3" type="search" id="searchBox" placeholder="Rechercher un khassida" aria-label="Search">
-      <button class="btn btn-outline-success" id="searchButton" onclick="searchBook()" type="submit" >Rechercher</button>
-    </div>
+    <app-search></app-search>
   </div>
 </nav>

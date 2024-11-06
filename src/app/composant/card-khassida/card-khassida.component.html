@@ -1,8 +1,7 @@
 <app-carousel></app-carousel>
 <app-nab-bar></app-nab-bar>
-
 <main>
-<div class="row row-cols-4 row-cols-md-5 g-4 customDivKhassida"  id="khassida" >
+<div class="row row-cols-6 row-cols-md-5 g-4 row-cols-lg-5 row-cols-sm-5 customDivKhassida"  id="khassida" >
   <div class="col"   *ngFor="let khassida of khassidaList; trackBy: trackByKhassidaId">
     <img [src]="khassida.lienImg" class="card-img-top" [alt]="khassida.name">
     <div class="card-body">

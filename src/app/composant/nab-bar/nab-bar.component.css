@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #012015;
-  padding: 0 20px;
+  padding: 0 10px;
   list-style-type: none;
 }
 
@@ -37,16 +37,36 @@
   width: 0;
   height: 0;
 }
-#searchBox {
-  height: 30px;
-  margin: auto;
-}
-#searchButton{
-  color: white;
 
-}
 
 .container-fluid{
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
+
+/* Bouton de toggle blanc */
+.navbar .custom-toggler .navbar-toggler-icon {
+  filter: invert(1); /* Rend l'icône blanche */
+}
+
+/* Ajustement de l'input et du bouton en mode mobile */
+@media (max-width: 576px) {
+  .container-fluid {
+    flex-wrap: nowrap; /* Empêche la ligne de se diviser */
+    justify-content: space-between; /* Aligne les éléments en ligne */
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    width: auto; /* Ajuste automatiquement la largeur */
+  }
+  .navbar{
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+}
+

@@ -8,7 +8,7 @@ import {Khassida} from '../models/khassida';
   providedIn: 'root'
 })
 export class ApiServiceKhassida {
-  private apiUrl = 'http://145.223.33.61:3000/api/khassidas';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

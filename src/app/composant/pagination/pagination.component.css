@@ -1,4 +1,24 @@
 .d-flex{
   padding: 0;
+  margin-bottom: 30px;
+}
+.pagination {
+  padding: 0;
   margin: 0;
+}
+
+.pagination .page-item .page-link {
+  font-size: 0.8rem; /* Réduit la taille de la police */
+  padding: 7px 7px; /* Réduit le padding à l'intérieur des boutons */
+  margin: 0 2px; /* Réduit l'espacement entre les boutons */
+}
+
+@media (max-width: 576px) {
+  .pagination {
+    font-size: 0.8rem;
+  }
+
+  .pagination .page-item .page-link {
+    padding: 5px 5px; /* Réduit davantage le padding sur mobile */
+  }
 }

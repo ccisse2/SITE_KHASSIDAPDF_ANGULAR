@@ -1,11 +1,25 @@
 #searchBox {
   height: 30px;
-  margin-top: 15px;
+  margin: auto;
 }
 #searchButton{
   color: white;
-  margin-top: 15px;
-  height: 30px;
-  text-align: center;
 
+}
+
+@media (max-width: 576px) {
+  #searchBox {
+    flex: 1;
+    max-width: 70%; /* Réduit la largeur pour s'adapter */
+    font-size: 0.8rem;
+    margin-right: 5px;
+    padding: 5px;
+  }
+
+  #searchButton {
+    flex-shrink: 0; /* Empêche le bouton de se réduire davantage */
+    font-size: 0.8rem;
+    padding: 1px;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+  }
 }
