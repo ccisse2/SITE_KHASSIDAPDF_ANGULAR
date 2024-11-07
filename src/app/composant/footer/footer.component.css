@@ -1,0 +1,23 @@
+.container{
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+#foot{
+  background-color: #012015;
+}
+
+.mb-6{
+  margin-right: 0;
+  margin-left: 21%;
+}
+
+@media (max-width: 576px){
+  .mb-6{
+    margin-right: 0;
+    margin-left: 7%;
+  }
+
+}

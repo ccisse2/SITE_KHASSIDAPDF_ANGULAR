@@ -11,6 +11,7 @@ import {NabBarComponent} from '../nab-bar/nab-bar.component';
 import {QuranService} from '../../services/quran.service';
 import {SharedService} from '../../services/shared.service';
 import {ErrorNotificationService} from '../../services/error-notification.service';
+import {FooterComponent} from '../footer/footer.component';
 
 @Component({
   selector: 'app-card-khassida',
@@ -19,7 +20,8 @@ import {ErrorNotificationService} from '../../services/error-notification.servic
     NgForOf,
     PaginationComponent,
     CarouselComponent,
-    NabBarComponent
+    NabBarComponent,
+    FooterComponent
   ],
   templateUrl: './card-khassida.component.html',
   styleUrl: './card-khassida.component.css'
