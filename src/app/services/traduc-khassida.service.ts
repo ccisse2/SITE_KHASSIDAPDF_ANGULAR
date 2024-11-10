@@ -17,20 +17,20 @@ export class TraducKhassidaService {
   constructor(private http: HttpClient) { }
 
   getKhassidas(): Observable<TraductionKhassida[]> {
-    return this.http.get<TraductionKhassida[]>(`${this.apiUrl}/list_traduction_khassida`).pipe(
+    return this.http.get<TraductionKhassida[]>(`${this.apiUrl}/traduction/list_traduction_khassida`).pipe(
       catchError(this.handleError)
     );
   }
 
   getKhassidasPage(page: number = 1) {
-    return this.http.get(`${this.apiUrl}/traduction_khassida_paginer?page=${page}`).pipe(
+    return this.http.get(`${this.apiUrl}/traduction/traduction_khassida_paginer?page=${page}`).pipe(
       catchError(this.handleError)
     );
   }
 
 
   addKhassida(khassida: TraductionKhassida): Observable<TraductionKhassida> {
-    return this.http.post<TraductionKhassida>(`${this.apiUrl}/ajout_khassida_traduit`, khassida).pipe(
+    return this.http.post<TraductionKhassida>(`${this.apiUrl}/traduction/ajout_khassida_traduit`, khassida).pipe(
       catchError(this.handleError)
     );
   }

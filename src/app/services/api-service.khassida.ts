@@ -13,43 +13,43 @@ export class ApiServiceKhassida {
   constructor(private http: HttpClient) { }
 
   getKhassidas(): Observable<Khassida[]> {
-    return this.http.get<Khassida[]>(`${this.apiUrl}/list_khassida`).pipe(
+    return this.http.get<Khassida[]>(`${this.apiUrl}/khassida/list_khassida`).pipe(
      catchError(this.handleError)
     );
   }
 
   getKhassidasPage(page: number = 1) {
-    return this.http.get(`${this.apiUrl}/list?page=${page}`).pipe(
+    return this.http.get(`${this.apiUrl}/khassida/list?page=${page}`).pipe(
       catchError(this.handleError)
     );
   }
 
 
   addKhassida(khassida: Khassida): Observable<Khassida> {
-    return this.http.post<Khassida>(`${this.apiUrl}/ajout_khassida`, khassida).pipe(
+    return this.http.post<Khassida>(`${this.apiUrl}/khassida/ajout_khassida`, khassida).pipe(
       catchError(this.handleError)
     );
   }
 
   updateKhassida(khassida: Khassida): Observable<Khassida> {
-    return this.http.put<Khassida>(`${this.apiUrl}/modif_khassida/${khassida.id}`, khassida).pipe(
+    return this.http.put<Khassida>(`${this.apiUrl}/khassida/modif_khassida/${khassida.id}`, khassida).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteKhassida(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/suppr_khassida/${id}`).pipe(
+    return this.http.delete<void>(`${this.apiUrl}/khassida/suppr_khassida/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
   uploadFile(formData: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/upload-file`, formData).pipe(
+    return this.http.post(`${this.apiUrl}/khassida/ajout_khassida`, formData).pipe(
       catchError(this.handleError)
     );
   }
   searchKhassidas(query : string){
-    return this.http.get<{ data: Khassida[] }>(`${this.apiUrl}/search`, { params: { q: query } }).pipe(
+    return this.http.get<{ data: Khassida[] }>(`${this.apiUrl}/khassida/search`, { params: { q: query } }).pipe(
       catchError(this.handleError)
     );
   }
