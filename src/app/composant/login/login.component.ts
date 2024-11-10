@@ -30,9 +30,7 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    console.log('formulaire soumis')
     if (this.loginForm.valid) {
-      console.log('formulaire valide')
       this.authService.login(this.loginForm.value).subscribe({
         next: () => {
           this.router.navigate(['/admin']).then(r => {
@@ -40,7 +38,6 @@ export class LoginComponent {
         },
         error: (err) => {
           this.loginError = 'Invalid credentials. Please try again.';
-          console.error('Login error:', err);
         }
       });
     }else {

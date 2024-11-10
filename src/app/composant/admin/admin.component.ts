@@ -75,7 +75,6 @@ export class AdminComponent {
 
     serviceCall?.uploadFile(formData).subscribe({
       next: (response) => {
-        console.log('Ajout réussi:', response);
         this.isSubmitting = false;
         this.adminForm.reset();
         //navigation vers la page khassida
@@ -83,7 +82,6 @@ export class AdminComponent {
         });
       },
       error: (error) => {
-        console.error('Erreur lors de l\'ajout:', error);
         this.isSubmitting = false;
       }
     });

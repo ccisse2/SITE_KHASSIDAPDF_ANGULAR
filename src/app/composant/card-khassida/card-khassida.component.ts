@@ -84,7 +84,6 @@ ngOnInit(): void {
       tap((response: any) => {
         this.khassidaList = response.data;
         this.totalPages = response.totalPages;
-        console.log(`Récupération réussie des Khassidas page ${this.totalPages}`, this.khassidaList);
       }),
       catchError(error => {
         this.handleError();
@@ -126,5 +125,4 @@ ngOnInit(): void {
   trackByKhassidaId(index: number, khassida: Khassida): number {
     return <number>khassida.id;
   }
-
 }

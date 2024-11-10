@@ -20,7 +20,6 @@ export class ApiServiceKhassida {
 
   getKhassidasPage(page: number = 1) {
     return this.http.get(`${this.apiUrl}/list?page=${page}`).pipe(
-      tap(data => console.log('Données reçues:', data)), // Ajout
       catchError(this.handleError)
     );
   }
@@ -56,8 +55,6 @@ export class ApiServiceKhassida {
   }
 
   private handleError(error: HttpErrorResponse) {
-    // Log the error for debugging
-    console.error('An error occurred:', error);
     return throwError(() => new Error('Something went wrong; please try again later.'));
   }
 }

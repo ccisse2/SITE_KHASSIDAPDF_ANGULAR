@@ -13,7 +13,6 @@ export class SearchComponent{
   constructor(private sharedService: SharedService) {}
 
   onSearchChange(query: string): void {
-    console.log('la méthode onSearchChange de SearchComponent est appellé')
     this.sharedService.emitSearchQuery(query);
   }
 }

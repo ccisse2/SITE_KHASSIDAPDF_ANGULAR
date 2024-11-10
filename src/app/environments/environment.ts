@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.khassidapdf.com/api/khassidas'
+  apiUrl: 'http://localhost:3000/api/khassidas'
 };

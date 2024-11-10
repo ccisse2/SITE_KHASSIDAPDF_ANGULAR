@@ -10,7 +10,6 @@ export class LoggingService {
   constructor(private http: HttpClient) {}
 
   log(message: string): void {
-    console.log(`LOG: ${new Date().toISOString()} - ${message}`);
     this.sendLogToServer('log', message);
   }
 
