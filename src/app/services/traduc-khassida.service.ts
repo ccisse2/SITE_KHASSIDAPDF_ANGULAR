@@ -6,7 +6,6 @@ import {TraductionKhassida} from '../models/TraductionKhassida';
 import {Khassida} from '../models/khassida';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
