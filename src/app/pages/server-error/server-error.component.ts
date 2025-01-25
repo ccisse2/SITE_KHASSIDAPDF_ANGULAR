@@ -5,16 +5,15 @@ import {NabBarComponent} from '../../composant/nab-bar/nab-bar.component';
 import {FooterComponent} from "../../composant/footer/footer.component";
 
 @Component({
-  selector: 'app-server-error',
-  standalone: true,
+    selector: 'app-server-error',
     imports: [
         RouterLink,
         CarouselComponent,
         NabBarComponent,
         FooterComponent
     ],
-  templateUrl: './server-error.component.html',
-  styleUrl: './server-error.component.css'
+    templateUrl: './server-error.component.html',
+    styleUrl: './server-error.component.css'
 })
 export class ServerErrorComponent {
 

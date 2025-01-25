@@ -5,15 +5,14 @@ import {CarouselComponent} from '../../composant/carousel/carousel.component';
 import {NabBarComponent} from '../../composant/nab-bar/nab-bar.component';
 
 @Component({
-  selector: 'app-error-notification',
-  standalone: true,
-  imports: [
-    NgIf,
-    CarouselComponent,
-    NabBarComponent
-  ],
-  templateUrl: './error-notification.component.html',
-  styleUrl: './error-notification.component.css'
+    selector: 'app-error-notification',
+    imports: [
+        NgIf,
+        CarouselComponent,
+        NabBarComponent
+    ],
+    templateUrl: './error-notification.component.html',
+    styleUrl: './error-notification.component.css'
 })
 export class ErrorNotificationComponent implements OnInit {
   errorMessage: string | null = null;

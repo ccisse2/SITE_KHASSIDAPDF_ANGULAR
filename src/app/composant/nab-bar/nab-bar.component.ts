@@ -5,15 +5,14 @@ import {AuthService} from '../../services/auth.service';
 import {NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-nab-bar',
-  standalone: true,
-  imports: [
-    RouterLink,
-    SearchComponent,
-    NgIf
-  ],
-  templateUrl: './nab-bar.component.html',
-  styleUrl: './nab-bar.component.css'
+    selector: 'app-nab-bar',
+    imports: [
+        RouterLink,
+        SearchComponent,
+        NgIf
+    ],
+    templateUrl: './nab-bar.component.html',
+    styleUrl: './nab-bar.component.css'
 })
 export class NabBarComponent {
   isAuthenticated: boolean = false;

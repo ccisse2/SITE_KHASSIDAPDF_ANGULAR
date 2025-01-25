@@ -1,16 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {BehaviorSubject, interval, Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-carousel',
-  standalone: true,
-  imports: [
-    NgForOf,
-    AsyncPipe
-  ],
-  templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.css'
+    selector: 'app-carousel',
+    imports: [
+        AsyncPipe
+    ],
+    templateUrl: './carousel.component.html',
+    styleUrl: './carousel.component.css'
 })
 export class CarouselComponent implements OnInit {
   images = [

@@ -7,16 +7,15 @@ import {CarouselComponent} from '../carousel/carousel.component';
 import {NabBarComponent} from '../nab-bar/nab-bar.component';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    NgIf,
-    CarouselComponent,
-    NabBarComponent
-  ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    imports: [
+        ReactiveFormsModule,
+        NgIf,
+        CarouselComponent,
+        NabBarComponent
+    ],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
 export class LoginComponent {
   loginForm: FormGroup;

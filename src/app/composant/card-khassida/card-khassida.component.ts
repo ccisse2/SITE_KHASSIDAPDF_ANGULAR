@@ -14,17 +14,16 @@ import {ErrorNotificationService} from '../../services/error-notification.servic
 import {FooterComponent} from '../footer/footer.component';
 
 @Component({
-  selector: 'app-card-khassida',
-  standalone: true,
-  imports: [
-    NgForOf,
-    PaginationComponent,
-    CarouselComponent,
-    NabBarComponent,
-    FooterComponent
-  ],
-  templateUrl: './card-khassida.component.html',
-  styleUrl: './card-khassida.component.css'
+    selector: 'app-card-khassida',
+    imports: [
+        NgForOf,
+        PaginationComponent,
+        CarouselComponent,
+        NabBarComponent,
+        FooterComponent
+    ],
+    templateUrl: './card-khassida.component.html',
+    styleUrl: './card-khassida.component.css'
 })
 export class CardKhassidaComponent implements OnInit {
   khassida: Khassida | undefined;
